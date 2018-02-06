@@ -1,0 +1,15 @@
+[Unit]
+Description=Duo Security Auth Proxy
+After=network.target
+
+[Service]
+Type=forking
+Restart=on-failure
+KillMode=process
+PIDFile=/opt/duoauthproxy/run/duoauthproxy.pid
+ExecStart=/opt/duoauthproxy/bin/authproxyctl start
+ExecStop=/opt/duoauthproxy/bin/authproxyctl stop
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
